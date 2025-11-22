@@ -27,7 +27,7 @@ export function HeroSection() {
   ];
 
   return (
-    <div className="relative z-10 flex min-h-svh w-full flex-col items-center justify-center overflow-hidden">
+<div className="relative z-10 flex min-h-[55vh] md:min-h-[100vh] w-full flex-col items-center justify-center overflow-hidden">
 
       {/* ============================
           DARK GRADIENT LAYERS
@@ -42,28 +42,26 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.1 }}
-        className="relative z-[30] px-6 text-center max-w-5xl"
+        className="relative z-[30] px-6 sm:px-6 text-center max-w-4xl"
       >
-        <h1 className="  bg-gradient-to-br from-[#540606] via-[#a71d31] to-[#f8d9b8]
-            bg-clip-text text-transparent 
-            text-4xl md:text-6xl font-extrabold tracking-tight">
+        <h1 className="bg-gradient-to-br from-[#540606] via-[#a71d31] to-[#f8d9b8] bg-clip-text text-transparent text-4xl sm:text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
           SPACE <br />
-          <span className="  bg-gradient-to-br from-[#540606] via-[#a71d31] to-[#f8d9b8]
-            bg-clip-text text-transparent 
-            text-3xl md:text-4xl font-bold tracking-tight opacity-80">by</span>{" "}
-          <span className="inline-block bg-gradient-to-r from-indigo-400 via-sky-400 to-rose-400 bg-clip-text text-transparent font-bold">
+          <span className="bg-gradient-to-br from-[#540606] via-[#a71d31] to-[#f8d9b8] bg-clip-text text-transparent text-3xl sm:text-3xl md:text-4xl font-bold tracking-tight opacity-80">
+            by
+          </span>{" "}
+          <span className="inline-block bg-gradient-to-r from-indigo-400 via-sky-400 to-rose-400 bg-clip-text text-transparent font-bold text-4xl sm:text-4xl md:text-6xl">
             Signature
           </span>
         </h1>
 
-        <p className="mx-auto mt-4 max-w-xl text-sm md:text-base text-neutral-300">
+        <p className="mx-auto mt-4 max-w-lg text-sm sm:text-sm md:text-base text-neutral-300 leading-relaxed">
           You are not your job, you're not how much money you have in the bank.
           You are not the car you drive. You are not the contents of your wallet.
         </p>
 
         <div className="pt-6 flex justify-center">
           <Link to="/Categories">
-            <button className="rounded-xl border border-white/30 bg-white/10 px-8 py-3 text-sm font-medium text-white backdrop-blur-md shadow-lg transition-all hover:bg-white/20 hover:scale-[1.03] active:scale-95 cursor-pointer">
+            <button className="rounded-xl border border-white/30 bg-white/10 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-sm font-medium text-white backdrop-blur-md shadow-lg transition-all hover:bg-white/20 hover:scale-[1.03] active:scale-95 cursor-pointer">
               Explore Now
             </button>
           </Link>
