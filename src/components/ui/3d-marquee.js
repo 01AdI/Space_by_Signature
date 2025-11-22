@@ -13,7 +13,7 @@ export const ThreeDMarquee = ({ images, className }) => {
   return (
     <div
       className={cn(
-        "relative mx-auto block h-[550px] md:h-[650px] lg:h-[750px] overflow-hidden",
+        "relative mx-auto block h-screen md:h-[650px] lg:h-[750px] overflow-hidden",
         className
       )}
     >
