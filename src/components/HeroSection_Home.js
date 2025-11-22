@@ -27,7 +27,7 @@ export function HeroSection() {
   ];
 
   return (
-    <div className="relative z-10 flex h-[100dvh] w-full flex-col items-center justify-center overflow-hidden">
+    <div className="relative z-10 flex min-h-svh w-full flex-col items-center justify-center overflow-hidden">
 
       {/* ============================
           DARK GRADIENT LAYERS
