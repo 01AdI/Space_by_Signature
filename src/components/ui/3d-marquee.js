@@ -18,7 +18,7 @@ export const ThreeDMarquee = ({ images, className }) => {
       )}
     >
       {/* Soft dark overlay behind images */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#540606] via-[#a71d31] to-[#f8d9b8] pointer-events-none" />
 
       <div className="flex size-full items-center justify-center">
         <div className="size-[1400px] max-sm:size-[900px] shrink-0 scale-[0.45] sm:scale-[0.6] md:scale-[0.8] lg:scale-[1] transition-all">
@@ -27,7 +27,7 @@ export const ThreeDMarquee = ({ images, className }) => {
               transform: "rotateX(35deg) rotateY(0deg) rotateZ(-25deg)",
               perspective: "1800px",
             }}
-            className="relative top-32 right-[30%] grid size-full origin-top-left grid-cols-4 gap-6 md:gap-8 transform-3d"
+            className="relative top-0 md:top-32 right-[20%] md:right-[30%] grid size-full origin-top-left grid-cols-3 md:grid-cols-4 gap-14 md:gap-8 transform-3d"
           >
             {chunks.map((subarray, colIndex) => (
               <motion.div
@@ -57,10 +57,10 @@ export const ThreeDMarquee = ({ images, className }) => {
                         object-cover 
                         shadow-xl
                         transition-all duration-500
-                        ring-1 ring-white/10
+                        ring-1 ring-red-100/10
 
-                        w-[550px] 
-                        h-[380px] 
+                        w-[650px] 
+                        h-[480px] 
                         sm:w-[650px] sm:h-[450px] 
                         md:w-[800px] md:h-[550px]
                         lg:w-[900px] lg:h-[620px]
