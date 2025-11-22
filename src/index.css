@@ -1,0 +1,43 @@
+@import "tailwindcss";
+ 
+
+@theme inline {
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+ 
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+}
+
+/* paste in src/index.css or globals.css */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes scrollInfinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.fade-video {
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.fade-video.fade-in {
+  opacity: 1;
+}
+
+
+/* utility to animate a multi-stop gradient across the element */
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradientShift 6s linear infinite;
+}
