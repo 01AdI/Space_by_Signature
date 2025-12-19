@@ -77,7 +77,7 @@ export const LampContainer = ({ children, className }) => {
       </div>
 
       {/* CONTENT */}
-      <div className="absolute z-20 bottom-70 md:bottom-90 w-full px-6 flex justify-center text-center">
+      <div className="absolute z-20 bottom-90 md:bottom-90 w-full px-6 flex justify-center text-center">
         {children}
       </div>
     </section>
