@@ -1,166 +1,191 @@
-import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
-import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router";
+import { Instagram, Facebook, Linkedin, Twitter, ArrowUp } from "lucide-react";
+const socialLinks = [
+  { icon: Instagram, url: "https://www.instagram.com/space___bysignature?igsh=cmtscmh2bWVsdWtn" },
+  { icon: Facebook, url: "https://www.facebook.com/profile.php?id=61579223225561" },
+  { icon: Linkedin, url: "https://www.linkedin.com/company/109892135/admin/dashboard/" },
+];
 
-export function HeroSection() {
-  const hero1 = new URL("../images/home-hero-1.png", import.meta.url).href;
-  const hero2 = new URL("../images/home-hero-2.png", import.meta.url).href;
-  const hero3 = new URL("../images/home-hero-3.png", import.meta.url).href;
-
-
-  // const slides = [
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg",
-  //     tagline: "Timeless luxury crafted for modern living."
-  //   },
-  //   {
-  //     image:
-  //       "https://cdn.pixabay.com/photo/2024/06/27/08/50/ai-generated-8856798_1280.jpg",
-  //     tagline: "Spaces designed to inspire elegance."
-  //   },
-  //   {
-  //     image:
-  //       "https://images.unsplash.com/photo-1730989427568-0a6fdb5a2fb1?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //     tagline: "Where comfort meets architectural beauty."
-  //   }
-  // ];
-
-
-    const slides = [
-    {
-      image:hero1,
-      tagline: "Timeless luxury crafted for modern living."
-    },
-    {
-      image:hero2,
-      tagline: "Spaces designed to inspire elegance."
-    },
-    {
-      image:hero3,
-      tagline: "Where comfort meets architectural beauty."
-    }
-  ];
-
-
-  const [index, setIndex] = useState(0);
-  const touchStart = useRef(null);
-
-  // AUTO CHANGE
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 9600);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  // SWIPE SUPPORT
-  const handleTouchStart = (e) => {
-    touchStart.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e) => {
-    if (!touchStart.current) return;
-
-    const diff = touchStart.current - e.changedTouches[0].clientX;
-
-    if (diff > 50) next();
-    if (diff < -50) prev();
-
-    touchStart.current = null;
-  };
-
-  const next = () => setIndex((i) => (i + 1) % slides.length);
-  const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
-
-  // PARALLAX TEXT
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 250], [0, -80]);
-
+export default function Footers() {
   return (
-    <section
-      className="relative w-full min-h-[65vh] md:h-screen pt-[72px] md:pt-0 overflow-hidden bg-black"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+    <footer
+      className="
+      bg-[#660708]
+      text-[#eae5df]
+      px-6 sm:px-10 md:px-20
+      py-12 md:py-16
+      flex flex-col gap-14
+    "
     >
-
-      {/* IMAGE SLIDESHOW */}
-      <AnimatePresence>
-        <motion.img
-          key={index}
-          src={slides[index].image}
-          className="absolute inset-0 w-full h-full object-cover"
-          initial={{ opacity: 0, scale: 1.15 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 2.6, ease: [0.22, 1, 0.36, 1] }}  // Ken Burns zoom
-        />
-      </AnimatePresence>
-
-      {/* OVERLAYS */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/85 z-[2]" />
-
-      {/* CONTENT */}
-      <motion.div
-        style={{ y }}
-        className="relative z-[3] flex flex-col justify-center items-center h-full px-6 text-center select-none"
+      {/* TOP SECTION */}
+      <div
+        className="
+        grid grid-cols-1
+        md:grid-cols-3
+        gap-14 md:gap-10
+      "
       >
-
-        <motion.img 
-          src={new URL("../images/SPACE-Logo.png", import.meta.url).href} 
-          className="w-60 md:w-100 mb-4 drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] pt-10 md:mt-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-        />
-
-
-        {/* TAGLINE CHANGER */}
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={index}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -18 }}
-            transition={{ duration: 0.8 }}
-           className="mt-5 max-w-xl text-[21px] md:text-4xl font-semibold text-[#eae5df] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)]
-           [text-shadow:_0_2px_10px_rgba(0,0,0,0.6)] font-[cinzel]"
-           >
-            {slides[index].tagline}
-          </motion.p>
-        </AnimatePresence>
-
-        {/* CTA */}
-        <Link to="/Categories">
-          <button
+        {/* LOGO + ABOUT */}
+        <div className="flex flex-col items-center md:items-start gap-4 text-center md:text-left">
+          <img
+            src={new URL("../images/SPACE-Logo.png", import.meta.url).href}
             className="
-              mt-8 px-9 py-3 rounded-full
-              bg-linear-to-br from-[#3b0000] via-[#a00000] to-[#f6e7c5]
-              text-white tracking-wide font-semibold
-              shadow-xl hover:brightness-110 hover:scale-105
-              transition-all font-[Montserrat] text-[12px] md:text-base cursor-pointer
+              w-36 sm:w-44 md:w-48
+              mb-3
+              drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]
             "
-          >
-            Visit The Experience Centre
-          </button>
-        </Link>
+            alt="Space Logo"
+          />
 
-        {/* DOT NAVIGATION */}
-        <div className="absolute bottom-[-25%] md:bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-[5]">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`h-2 w-2 rounded-full transition-all ${
-                index === i
-                  ? "bg-[#d4af37] scale-125"
-                  : "bg-white/40"
-              }`}
-            />
-          ))}
+          <p
+            className="
+            opacity-80
+            leading-relaxed
+            font-[Cinzel]
+            font-light
+            max-w-sm
+          "
+          >
+            Think Luxury. | Think Elegance. | Think Signature. Explore
+            Furniture, interiors and custom solutions built around you.
+          </p>
+
+          {/* Social Icons */}
+          {/* <div className="flex gap-6 mt-4">
+            {[Instagram, Facebook, Linkedin, Twitter].map((Icon, i) => (
+              <Icon
+                key={i}
+                size={26}
+                className="
+                  cursor-pointer
+                  hover:scale-110
+                  transition
+                  hover:text-white
+                "
+              />
+            ))}
+          </div> */}
+
+          <div className="flex gap-6 mt-4">
+            {socialLinks.map(({ icon: Icon, url }, i) => (
+              <a key={i} href={url} target="_blank" rel="noopener noreferrer">
+                <Icon
+                  size={26}
+                  className="cursor-pointer hover:scale-110 transition hover:text-white"
+                />
+              </a>
+            ))}
+          </div>
         </div>
-      </motion.div>
-    </section>
+
+        {/* CONTACT SECTION */}
+        <div
+          className="
+          flex flex-col gap-4
+          items-center md:items-start
+          text-center md:text-left
+        "
+        >
+          <strong className="text-2xl md:text-3xl font-semibold font-[Playfair]">
+            Contact
+          </strong>
+
+          <p className="font-[Montserrat] font-light text-sm sm:text-base">
+            <strong className="font-[Playfair] text-lg">Add:</strong> Seestrasse
+            21, Zurich, Switzerland
+          </p>
+          <p className="font-[Montserrat] font-light text-sm sm:text-base">
+            <strong className="font-[Playfair] text-lg">Email:</strong>{" "}
+            tadooo@example.com
+          </p>
+          <p className="font-[Montserrat] font-light text-sm sm:text-base">
+            <strong className="font-[Playfair] text-lg">Tel:</strong> 9941234469
+          </p>
+          <p className="font-[Montserrat] font-light text-sm sm:text-base">
+            <strong className="font-[Playfair] text-lg">Timing:</strong> Mon–Sat
+            9am–6pm
+          </p>
+        </div>
+
+        {/* QUICK LINKS */}
+        <div
+          className="
+          flex flex-col gap-6
+          items-center md:items-start
+          text-center md:text-left
+        "
+        >
+          <strong className="text-2xl md:text-3xl font-semibold font-[Playfair]">
+            Quick Links
+          </strong>
+
+          <div
+            className="
+            grid grid-cols-2
+            gap-x-8 gap-y-3
+            font-[Montserrat]
+            font-light
+            text-sm sm:text-base
+          "
+          >
+            <Link to="/" className="hover:scale-105 transition">
+              Home
+            </Link>
+            <Link to="/About-Us" className="hover:scale-105 transition">
+              About Us
+            </Link>
+            <Link to="/Categories" className="hover:scale-105 transition">
+              Categories
+            </Link>
+            <Link to="/Contact" className="hover:scale-105 transition">
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* DIVIDER */}
+      <div className="border-t border-[#eae5df]/30"></div>
+
+      {/* BOTTOM SECTION */}
+      <div
+        className="
+        flex flex-col-reverse md:flex-row
+        justify-between
+        items-center
+        gap-6
+      "
+      >
+        <p
+          className="
+          text-sm sm:text-base md:text-lg
+          font-semibold
+          font-[Cinzel]
+          text-center md:text-left
+        "
+        >
+          © {new Date().getFullYear()} Space by Signature • All Rights Reserved
+        </p>
+
+        {/* BACK TO TOP */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="
+            flex items-center gap-2
+            px-4 py-2
+            rounded-lg
+            bg-white
+            text-[#660708]
+            font-semibold
+            hover:scale-105
+            transition
+            font-[Playfair]
+          "
+        >
+          <ArrowUp size={18} />
+          Back to Top
+        </button>
+      </div>
+    </footer>
   );
 }
