@@ -4,7 +4,7 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 export default function Customers_review() {
   return (
     <div className="
-      min-h-[40rem] 
+      min-h-160 
       rounded-md 
       flex flex-col 
       antialiased 
@@ -79,31 +79,38 @@ export default function Customers_review() {
 const testimonials = [
   {
     quote:
-      "It was the best of times, it was the worst of times...",
-    name: "Charles Dickens",
-    title: "A Tale of Two Cities",
+      "I am absolutely delighted with my recent purchases from Space By Signature The quality and craftsmanship of the furniture are truly top-notch, exceeding all my expectations. I bought a dining set, and both pieces have instantly elevated the look of my home. The showroom has an extensive and unique collection, making it easy to find items that perfectly matched my taste and decor. The entire experience, from browsing to delivery, was seamless. Highly recommend!",
+    name: "Mr. Gaurav Jain ",
+    title: "Dining Table",
   },
   {
     quote:
-      "To be, or not to be, that is the question...",
-    name: "William Shakespeare",
-    title: "Hamlet",
+      "We are happy to share our review for Modular Kitchen and Wardrobe work done by the  team of “Space”.Quality & design was extremely good beyond our expectation, work done with professionalism and products timely delivered us. Post Sales services by the Space are also remarkable and satisfactory.",
+    name: "Mr. Deepak Soni, CA",
+    title: "Kitchen & Wardrobe",
   },
   {
-    quote: "All that we see or seem is but a dream within a dream.",
-    name: "Edgar Allan Poe",
-    title: "A Dream Within a Dream",
-  },
-  {
-    quote:
-      "It is a truth universally acknowledged...",
-    name: "Jane Austen",
-    title: "Pride and Prejudice",
+    quote: 
+      "I got a customised shoe rack from Space, and the quality is absolutely amazing, especially the PU finish. The staff is very helpful with their suggestions and proactive in their responses. I also loved their collection of coffee tables and chairs and ended up choosing a unique piece with excellent craftsmanship. I’d definitely recommend them to everyone",
+    name: "Mrs. Megha",
+    title: "Shoerack",
   },
   {
     quote:
-      "Call me Ishmael. Some years ago...",
-    name: "Herman Melville",
-    title: "Moby-Dick",
+      "Space by Signature has an excellent collection of home décor articles that are truly beautiful, unique, and thoughtfully curated. Each piece reflects a special sense of style and quality. What made the experience even better was the owner (Himanshu and Amit ) and all other staff members—they are extremely polite, respectful, and very good at communication. They kept all their promises and ensured a smooth and pleasant buying experience. Highly recommended for anyone looking for distinctive home décor and genuine customer service.",
+    name: "Mr. Anurag Chordia ",
+    title: "",
+  },
+  {
+    quote:
+      "Found exactly what I needed at a great price. The service was fantastic, and the furniture looks amazing",
+    name: "Mr. Prashant Bulwani",
+    title: "Furniture",
+  },
+  {
+    quote:
+      "The center table is of very good quality and looks elegant in the living room. The material is strong and well-finished. Their service was excellent—delivery was on time and the staff was polite and helpful. Overall, a great product with reliable service. Highly satisfied",
+    name: "Mr. Pankaj Khandelwal",
+    title: "Centre Table",
   },
 ];
