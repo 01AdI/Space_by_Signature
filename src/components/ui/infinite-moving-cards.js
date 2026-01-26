@@ -73,7 +73,7 @@ export const InfiniteMovingCards = ({
             className="
               moving-card 
               relative 
-              w-[260px] 
+              w-[300px] 
               sm:w-[320px] 
               md:w-[380px] 
               lg:w-[420px] 
@@ -94,7 +94,7 @@ export const InfiniteMovingCards = ({
             "
           >
             <blockquote>
-              <span className="block text-base leading-relaxed text-white/90 font-[montserrat]">
+              <span className="block text-[14px] leading-relaxed text-white/90 font-[montserrat]">
                 {item.quote}
               </span>
 
