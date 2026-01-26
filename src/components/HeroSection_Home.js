@@ -3,24 +3,45 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router";
 
 export function HeroSection() {
+  const hero1 = new URL("../images/home-hero-1.png", import.meta.url).href;
+  const hero2 = new URL("../images/home-hero-2.png", import.meta.url).href;
+  const hero3 = new URL("../images/home-hero-3.png", import.meta.url).href;
 
-  const slides = [
+
+  // const slides = [
+  //   {
+  //     image:
+  //       "https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg",
+  //     tagline: "Timeless luxury crafted for modern living."
+  //   },
+  //   {
+  //     image:
+  //       "https://cdn.pixabay.com/photo/2024/06/27/08/50/ai-generated-8856798_1280.jpg",
+  //     tagline: "Spaces designed to inspire elegance."
+  //   },
+  //   {
+  //     image:
+  //       "https://images.unsplash.com/photo-1730989427568-0a6fdb5a2fb1?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     tagline: "Where comfort meets architectural beauty."
+  //   }
+  // ];
+
+
+    const slides = [
     {
-      image:
-        "https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg",
+      image:hero1,
       tagline: "Timeless luxury crafted for modern living."
     },
     {
-      image:
-        "https://cdn.pixabay.com/photo/2024/06/27/08/50/ai-generated-8856798_1280.jpg",
+      image:hero2,
       tagline: "Spaces designed to inspire elegance."
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1730989427568-0a6fdb5a2fb1?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image:hero3,
       tagline: "Where comfort meets architectural beauty."
     }
   ];
+
 
   const [index, setIndex] = useState(0);
   const touchStart = useRef(null);
