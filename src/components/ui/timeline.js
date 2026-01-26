@@ -1,108 +1,134 @@
 "use client";
 
-import { useScroll, useTransform, motion } from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import { motion } from "motion/react";
 
-export const Timeline = ({ data }) => {
-  const ref = useRef(null);
-  const containerRef = useRef(null);
-  const [height, setHeight] = useState(0);
+export const Timeline = ({ aboutUs_data }) => {
+  const data = aboutUs_data?.aboutPage;
 
-  useEffect(() => {
-    if (ref.current) {
-      setHeight(ref.current.getBoundingClientRect().height);
-    }
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 10%", "end 50%"],
-  });
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  if (!data) return null;
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full bg-[#f5f3ef]  font-sans md:px-10 pt-10"
-    >
-      {/* Header */}
-      <div className="max-w-7xl mx-auto py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="mb-4 max-w-4xl text-3xl md:text-6xl font-600 
-         tracking-tight bg-[#660708]
-         text-transparent bg-clip-text font-[Playfair]">
-          Changelog From Our Journey
-        </h2>
+    <div className="w-full bg-[#f5f3ef] font-[Inter] text-[#4f4f4f]">
 
-        <p className="text-neutral-700 text-[16px] md:text-[20px] max-w-sm font-[Playfair] font-light">
-          A timeline showcasing our milestones and continuous growth.
-        </p>
-      </div>
+      {/* ================= HERO ================= */}
+      <section className="pt-32 pb-24 px-6">
+        <div className="max-w-5xl mx-auto text-center space-y-6">
+          <h1 className="text-4xl md:text-6xl font-[Playfair] text-[#3a0003] leading-tight">
+            {data.hero?.title}
+          </h1>
 
-      {/* Timeline */}
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className="flex justify-start pt-12 md:pt-32 md:gap-10"
-          >
-            {/* Sticky Title + Dot */}
-            <div className="sticky top-32 md:top-40 z-40 flex items-start md:w-full">
-              {/* Timeline Dot */}
-              <div className="relative h-10 w-10 flex items-center justify-center">
-                <div className="absolute h-8 w-8 rounded-full 
-                  bg-white dark:bg-neutral-900 shadow-lg shadow-red-200/30 
-                  border border-neutral-300 dark:border-neutral-700 flex items-center justify-center">
-                  <div
-                    className="h-4 w-4 rounded-full 
-                    bg-[#660708]
-                    shadow-[0_0_8px_rgba(212,175,55,0.7)]"
-                  />
-                </div>
-              </div>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto">
+            {data.hero?.subtitle}
+          </p>
 
-              {/* Title (Desktop) */}
-              <h3 className="hidden md:block md:pl-20 text-2xl md:text-5xl font-semibold 
-                bg-[#660708]
-                text-transparent bg-clip-text font-[Playfair]">
-                {item.title}
-              </h3>
-            </div>
-
-            {/* Content */}
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              {/* Title (Mobile) */}
-              <h3 className="md:hidden block text-2xl mb-6 md:mb-4 font-semibold 
-                bg-linear-to-r from-[#3a0003] via-[#7a0a0e] to-[#d4af37]
-                text-transparent bg-clip-text font-[Playfair]">
-                {item.title}
-              </h3>
-
-              {item.content}
-            </div>
-          </div>
-        ))}
-
-        {/* Vertical Line — Premium Gradient */}
-        <div
-          className="absolute left-8 md:left-8 top-0 w-[3px] overflow-hidden 
-          [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
-          style={{ height: height + "px" }}
-        >
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0 w-[3px] 
-              bg-gradient-to-b 
-              from-[#3a0003] 
-              via-[#a30f12] 
-              to-[#d4af37]"
-          />
+          <p className="italic font-[Playfair] text-[#8a6f4d]">
+            {data.hero?.tagline}
+          </p>
         </div>
-      </div>
+      </section>
+
+      {/* ================= JOURNEY ================= */}
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto space-y-10">
+          <h2 className="text-3xl md:text-5xl font-[Playfair] text-[#660708]">
+            Signature: Where Design Meets Craft
+          </h2>
+
+          <p className="text-[17px] md:text-[18px] leading-relaxed">
+            {data.story?.intro}
+          </p>
+
+          <p className="text-[17px] md:text-[18px] leading-relaxed">
+            {data.story?.description}
+          </p>
+
+          <blockquote className="border-l-4 border-[#d4af37] pl-6 italic text-xl font-[Playfair] text-[#3a0003]">
+            “{data.story?.founder?.philosophy}”
+          </blockquote>
+        </div>
+      </section>
+
+      {/* ================= IMPACT NUMBERS ================= */}
+      <section className="bg-[#faf7f2] py-20 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+          {data.impact?.stats?.map((item, idx) => (
+            <div key={idx} className="space-y-2">
+              <h3 className="text-4xl md:text-5xl font-[Playfair] text-[#660708]">
+                {item.value}
+              </h3>
+              <p className="text-sm uppercase tracking-wide text-[#6b6b6b]">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= EVOLUTION ================= */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <h2 className="text-3xl md:text-5xl font-[Playfair] text-[#660708]">
+              {data.evolution?.title}
+            </h2>
+
+            <p className="text-[17px] leading-relaxed">
+              {data.evolution?.description}
+            </p>
+          </div>
+
+          <div className="bg-[#660708] text-[#f6e7c5] p-10 rounded-2xl space-y-4">
+            {data.evolution?.highlights?.map((point, idx) => (
+              <p key={idx} className="font-[Playfair] text-xl">
+                {point}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SPACE ================= */}
+      <section className="bg-[#faf7f2] py-24 px-6">
+        <div className="max-w-5xl mx-auto space-y-6 text-center">
+          <h2 className="text-3xl md:text-5xl font-[Playfair] text-[#660708]">
+            {data.space?.title}
+          </h2>
+
+          <p className="text-[17px] leading-relaxed max-w-3xl mx-auto">
+            {data.space?.description}
+          </p>
+        </div>
+      </section>
+
+      {/* ================= LEADERS ================= */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+          {Object.values(data.notes || {}).map((leader, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-10 rounded-2xl shadow-sm space-y-4"
+            >
+              <h3 className="text-2xl font-[Playfair] text-[#660708]">
+                {leader.name}
+              </h3>
+              <p className="uppercase text-xs tracking-wide text-[#9a9a9a]">
+                {leader.role}
+              </p>
+              <p className="text-[16px] leading-relaxed">
+                {leader.content}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= CLOSING QUOTE ================= */}
+      <section className="bg-[#3a0003] py-24 px-6 text-center">
+        <blockquote className="text-2xl md:text-4xl font-[Playfair] italic text-[#f6e7c5] max-w-4xl mx-auto">
+          “{data.quotes?.[0]?.text}”
+        </blockquote>
+      </section>
     </div>
   );
 };
