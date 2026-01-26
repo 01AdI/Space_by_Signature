@@ -2,7 +2,11 @@ import { cn } from "../../lib/utils";
 import { motion } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 
+
 export const LampContainer = ({ children, className }) => {
+
+  const AboutUs_img = new URL("../../images/about-us.png", import.meta.url).href;
+
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
@@ -10,23 +14,21 @@ export const LampContainer = ({ children, className }) => {
       className={cn(
         `
         relative w-full overflow-hidden
-        h-[70vh] sm:h-[80vh] md:h-[100vh]
+        h-[70vh] sm:h-[80vh] md:h-screen
         flex items-center justify-center
         `,
         className
       )}
     >
       {/* BACKGROUND IMAGE */}
-      <div
+      <img
+        src={AboutUs_img}
+        alt="About-us img"
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://ansainteriors.com/wp-content/uploads/2024/11/office-interior-designers-in-delhi-ncr-srinagar1-scaled.jpg')",
-        }}
       />
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* LAMP AREA */}
       <div className="relative z-10 w-full h-full flex items-center justify-center">
@@ -77,7 +79,7 @@ export const LampContainer = ({ children, className }) => {
       </div>
 
       {/* CONTENT */}
-      <div className="absolute z-20 bottom-80 md:bottom-90 w-full px-6 flex justify-center text-center">
+      <div className="absolute z-20 bottom-70 md:bottom-80 w-full px-6 flex justify-center text-center">
         {children}
       </div>
     </section>
